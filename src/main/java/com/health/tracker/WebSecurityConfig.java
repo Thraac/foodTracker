@@ -32,7 +32,17 @@ public class WebSecurityConfig  extends WebSecurityConfigurerAdapter {
         .antMatchers(HttpMethod.GET,"/demo/*").permitAll()
         .antMatchers(HttpMethod.POST,"/demo/*").permitAll()
         .antMatchers(HttpMethod.GET,"/exploreCourse").permitAll()
-        .anyRequest().authenticated();
+        // .anyRequest().authenticated()
+
+        .antMatchers("/home").permitAll()
+        .anyRequest().authenticated()
+        .and()
+        .formLogin()
+        .loginPage("/login")
+        .permitAll()
+        .and()
+        .logout()
+        .permitAll();
         // http
         //         .authorizeRequests()
         //             .antMatchers("/", "/home").permitAll()
