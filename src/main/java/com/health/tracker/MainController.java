@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 
 @Controller // this marks the class as a controller
-@RequestMapping(path="/demo") // maps requests for urls that start with /demo, after application path
+@RequestMapping(path="") // maps requests for urls that start with /demo, after application path
 public class MainController {
     
     @Autowired // this gets the bean called userRepository
@@ -36,7 +36,6 @@ public class MainController {
         model.addAttribute("user", new User());
 
         return "signup_form";
-
     }
 
     @PostMapping(path="/process_register")
