@@ -46,4 +46,76 @@ public class Food {
 
     @Column(nullable = false, length = 10)
     private float servings;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getMeal() {
+        return name;
+    }
+
+    public void setMeal(String meal) {
+        this.meal = meal;
+    } 
+
+    public int getCalories() {
+        return calories;
+    }
+
+    public void setCalories(int calories) {
+        this.calories = calories;
+    } 
+
+    public int getCarbs() {
+        return carbs;
+    }
+
+    public void setCarbs(int carbs) {
+        this.carbs = carbs;
+    } 
+
+    public int getProtein() {
+        return protein;
+    }
+
+    public void setProtein(int protein) {
+        this.protein = protein;
+    } 
+
+    public int getFat() {
+        return fat;
+    }
+
+    public void setFat(int fat) {
+        this.fat = fat;
+    } 
+
+    public float getServingSize() {
+        return servingSize;
+    }
+
+    public void setServingSize(int servingSize) {
+        this.servingSize = servingSize;
+    }
+
+    public float getServings() {
+        return servings;
+    }
+
+    public void setServings(int servings) {
+        this.servings = servings;
+    } 
 }
