@@ -15,7 +15,7 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
 @Configuration
 @EnableWebSecurity
-public class WebSecurityConfig  extends WebSecurityConfigurerAdapter {
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -23,6 +23,7 @@ public class WebSecurityConfig  extends WebSecurityConfigurerAdapter {
         // This cannot stay in production, This prevents security from getting in the way of the testing
         // Alter this before going live
         http.csrf().disable().authorizeRequests()
+        .antMatchers(HttpMethod.GET, "/hello").authenticated()
         .antMatchers("/").permitAll()
         .antMatchers("/*").permitAll()
         .antMatchers(HttpMethod.POST,"/newuser").permitAll()
@@ -44,6 +45,7 @@ public class WebSecurityConfig  extends WebSecurityConfigurerAdapter {
         .and()
         .logout()
         .permitAll();
+
         // http
         //         .authorizeRequests()
         //             .antMatchers("/", "/home").permitAll()
@@ -57,6 +59,8 @@ public class WebSecurityConfig  extends WebSecurityConfigurerAdapter {
         //             .permitAll();
     }
 
+
+    // this is causing the failed logins, this always makes them user and password for the uesrname and password
     @Bean
     @Override
     public UserDetailsService userDetailsService() {
@@ -66,7 +70,6 @@ public class WebSecurityConfig  extends WebSecurityConfigurerAdapter {
                 .password(encoder.encode("password"))
                 .roles("USER")
                 .build();
-
         return new InMemoryUserDetailsManager(user);
     }
 }

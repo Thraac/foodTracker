@@ -25,7 +25,7 @@ public class MainController {
     // // RequestParam means it is a parameter from the GET or POST request
     // public @ResponseBody String addNewUser (@RequestParam String name, @RequestParam String email) {
     //     User newUser = new User();
-    //     newUser.setName(name);
+    //     newUser.setFirstName(name);
     //     newUser.setEmail(email);
     //     userRepository.save(newUser);
     //     return "Saved";
@@ -42,8 +42,9 @@ public class MainController {
     public String processRegister(User user) {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         String encodedPassword = passwordEncoder.encode(user.getPassword());
+        // user.setEmail(user.getEmail());
         user.setPassword(encodedPassword);
-
+  
         userRepository.save(user);
 
         return "register_success";
