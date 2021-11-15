@@ -1,5 +1,6 @@
 package com.health.tracker;
 
+import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 
 import com.health.tracker.User;
@@ -10,4 +11,5 @@ import com.health.tracker.User;
 
 public interface UserRepository extends CrudRepository<User, Integer> {
     
+    // public List<User> getUsersById(Long id); 
 }
