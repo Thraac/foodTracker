@@ -1,6 +1,8 @@
 package com.health.tracker;
 
 import java.util.List;
+
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 import com.health.tracker.User;
@@ -12,4 +14,7 @@ import com.health.tracker.User;
 public interface UserRepository extends CrudRepository<User, Integer> {
     
     // public List<User> getUsersById(Long id); 
+    @Query("SELECT u from User u WHERE u.email = ?1")
+    public User findByEmail(String email);
+
 }
