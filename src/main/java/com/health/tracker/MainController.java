@@ -20,16 +20,8 @@ public class MainController {
     @Autowired // this gets the bean called userRepository
     private UserRepository userRepository;
 
-    // @PostMapping(path="/add") // mapp only post requests
-    // // ResponseBody returned string is the response not a view
-    // // RequestParam means it is a parameter from the GET or POST request
-    // public @ResponseBody String addNewUser (@RequestParam String name, @RequestParam String email) {
-    //     User newUser = new User();
-    //     newUser.setFirstName(name);
-    //     newUser.setEmail(email);
-    //     userRepository.save(newUser);
-    //     return "Saved";
-    // }
+    @Autowired
+    private FoodRepository foodRepository;
 
     @GetMapping(path="/register")
     public String showRegistrationForm(Model model) {
@@ -54,6 +46,20 @@ public class MainController {
     public @ResponseBody Iterable<User> getAllUsers() {
         // this returns a json or xml with the users
         return userRepository.findAll();
+    }
+
+    @GetMapping(path="/addFood")
+    public String showFoodForm(Model model) {
+        model.addAttribute("food", new Food());
+
+        return "add_food";
+    }
+
+    @PostMapping(path="/process_food")
+    public String addFood(Food food) {
+        foodRepository.save(food);
+
+        return "addFood";
     }
 }
 

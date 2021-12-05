@@ -8,9 +8,81 @@
     <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
+    <div class="container text-center">
+        <div>
+            <h1>Add Food</h1>
+        </div>
+        <form th:action="@{/process_food}" th:object="${food}"
+            method="post" style="max-width: 600px; margin: 0 auto;">
+        <div class="m-3">
+            <div class="form-group row">
+                <label class="col-4 col-form-label">Food name: </label>
+                <div class="col-8">
+                    <input type="text" th:field="*{name}" class="form-control" required />
+                </div>
+            </div>
 
-    <div>
-        <button type="submit" class="btn btn-primary">Add Food</button>
+            <div class="form-group row">
+                <label class="col-4 col-form-label">meal: </label>
+                <div class="col-8">
+                    <input type="text" th:field="*{meal}" class="form-control"
+                           maxlength="64"/>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-4 col-form-label">Calories: </label>
+                <div class="col-8">
+                    <input type="number" th:field="*{calories}" class="form-control"
+                            maxlength="10"/>
+                </div>
+            </div>
+             
+            <div class="form-group row">
+                <label class="col-4 col-form-label">Protein: </label>
+                <div class="col-8">
+                    <input type="number" th:field="*{protein}" class="form-control"
+                             maxlength="10" />
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-4 col-form-label">Carbs: </label>
+                <div class="col-8">
+                    <input type="number" th:field="*{carbs}" class="form-control"
+                             maxlength="10" />
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-4 col-form-label">Fat: </label>
+                <div class="col-8">
+                    <input type="number" th:field="*{fat}" class="form-control"
+                             maxlength="10" />
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-4 col-form-label">Serving Size: </label>
+                <div class="col-8">
+                    <input type="number" th:field="*{servingSize}" name="serving_size" class="form-control"
+                             maxlength="10" />
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-4 col-form-label">Servings: </label>
+                <div class="col-8">
+                    <input type="number" th:field="*{servings}" class="form-control"
+                            maxlength="10" />
+                </div>
+            </div>
+            <div>
+                <button type="submit" class="btn btn-primary">Add Food</button>
+            </div>
+            <p>Click <a th:href="@{/home}">here</a> to return to the home page.</p>
+        </div>
+        </form>
     </div>
 </body>
 </html>

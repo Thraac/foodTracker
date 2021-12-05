@@ -67,7 +67,7 @@ public class Food {
     }
 
     public String getMeal() {
-        return name;
+        return meal;
     }
 
     public void setMeal(String meal) {
@@ -110,7 +110,7 @@ public class Food {
         return servingSize;
     }
 
-    public void setServingSize(int servingSize) {
+    public void setServingSize(float servingSize) {
         this.servingSize = servingSize;
     }
 
@@ -118,7 +118,7 @@ public class Food {
         return servings;
     }
 
-    public void setServings(int servings) {
+    public void setServings(float servings) {
         this.servings = servings;
     } 
 }
