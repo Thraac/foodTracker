@@ -47,6 +47,9 @@ public class Food {
     @Column(nullable = false, length = 10)
     private float servings;
 
+
+    // SETTERS GETTERS 
+
     public Long getId() {
         return id;
     }
