@@ -29,16 +29,26 @@ import java.util.List;
 @RequestMapping(path="") // maps requests for urls that start with /demo, after application path
 public class MainController {
     
+    // FOOD
     @Autowired
     private FoodService foodService;
 
+    @Autowired
+    private FoodRepository foodRepository;
+
+    // EXERCISE
+    @Autowired 
+    private ExerciseService exerciseService;
+
+    @Autowired
+    private ExerciseRepository exerciseRepository;
+
+    // USER
     @Autowired // this gets the bean called userRepository
     private UserRepository userRepository;
 
-    @Autowired
-    private FoodRepository foodRepository;
     
-
+    // USER
     @GetMapping(path="/register")
     public String showRegistrationForm(Model model) {
         model.addAttribute("user", new User());
@@ -58,12 +68,13 @@ public class MainController {
         return "register_success";
     }
 
-    @GetMapping(path="/all") // map only get requests
-    public @ResponseBody Iterable<User> getAllUsers() {
-        // this returns a json or xml with the users
-        return userRepository.findAll();
-    }
+    // @GetMapping(path="/all") // map only get requests
+    // public @ResponseBody Iterable<User> getAllUsers() {
+    //     // this returns a json or xml with the users
+    //     return userRepository.findAll();
+    // }
 
+    // FOOD
     @GetMapping(path="/addFood")
     public String showFoodForm(Model model) {
         model.addAttribute("food", new Food());
@@ -88,6 +99,31 @@ public class MainController {
         List<Food> foods = foodService.getFoods();
         model.addAttribute("foodList", foods);
         return "food_list";
+    }
+
+    // EXERCISE
+    @GetMapping(path="/addExercise")
+    public String showExerciseForm(Model model) {
+        model.addAttribute("exercise", new Exercise());
+
+        return "add_exercise";
+    }
+
+    @PostMapping(path="/process_exercise")
+    public String addExercise(Exercise exercise) {
+        CustomUserDetails customUserDetails = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        long userId = customUserDetails.getUserId();
+
+        exercise.setUserId(userId);
+        exerciseRepository.save(exercise);
+        return "home";
+    }
+
+    @RequestMapping(path="/allExercise", method=RequestMethod.GET)
+    private String showExercise (Model model) {
+        List<Exercise> exercises = exerciseService.getExercises();
+        model.addAttribute("exerciseList", exercises);
+        return "exercise_list";
     }
 }
 

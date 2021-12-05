@@ -7,22 +7,25 @@
 </head>
 <body>
     <table>
-        <!-- <tr>
-            <th>ID</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-        </tr> -->
+        <tr>
+            <th>Food</th>
+            <th>Meal</th>
+            <th>Calories</th>
+            <th>Carbs</th>
+            <th>Fat</th>
+            <th>Protein</th>
+            <th>Serving Size</th>
+            <th>Servings</th>
+        </tr>
         <tr th:each="food : ${foodList}">
             <td class="align-middle" th:text="${food.name}"></td>
             <td class="align-middle" th:text="${food.meal}"></td>
             <td class="align-middle" th:text="${food.calories}"></td>
-            <!-- <td class="align-middle" th:text="${food.id}"></td>
             <td class="align-middle" th:text="${food.carbs}"></td>
             <td class="align-middle" th:text="${food.fat}"></td>
             <td class="align-middle" th:text="${food.protein}"></td>
-            <td class="align-middle" th:text="${food.serving_size}"></td>
+            <td class="align-middle" th:text="${food.servingSize}"></td>
             <td class="align-middle" th:text="${food.servings}"></td>
-            <td class="align-middle" th:text="${food.user_id}"></td> -->
         </tr>
     </table>
     <div class="container text-center">
