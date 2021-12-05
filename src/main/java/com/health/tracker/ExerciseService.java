@@ -7,13 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class FoodService {
+public class ExerciseService {
     @Autowired
-    private FoodRepository foodRepository;
+    private ExerciseRepository exerciseRepository;
 
-    public List<Food> getFoods() {
-        List<Food> list = new ArrayList<>();
-        foodRepository.findAll().forEach(list::add);
+    public List<Exercise> getExercises() {
+        List<Exercise> list = new ArrayList<>();
+        exerciseRepository.findAll().forEach(list::add);
         return list;
     }
 }
