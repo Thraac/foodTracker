@@ -59,7 +59,7 @@ public class MainController {
     public String addFood(Food food) {
         foodRepository.save(food);
 
-        return "addFood";
+        return "food_list";
     }
 }
 
