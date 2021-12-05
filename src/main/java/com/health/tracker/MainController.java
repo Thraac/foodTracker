@@ -18,10 +18,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import antlr.collections.List;
+import java.util.List;
 
 
 @Controller // this marks the class as a controller
@@ -36,6 +37,7 @@ public class MainController {
 
     @Autowired
     private FoodRepository foodRepository;
+    
 
     @GetMapping(path="/register")
     public String showRegistrationForm(Model model) {
@@ -80,11 +82,11 @@ public class MainController {
         return "home";
     }
 
-    @RequestMapping(path="/allFood")
+    @RequestMapping(path="/allFood", method=RequestMethod.GET)
     private String showFood (Model model) {
         
-        Iterable<Food> foods = foodService.getFoods();
-        model.addAttribute("food", foods);
+        List<Food> foods = foodService.getFoods();
+        model.addAttribute("foodList", foods);
         return "food_list";
     }
 }
