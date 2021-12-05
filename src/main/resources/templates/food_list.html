@@ -6,8 +6,19 @@
     <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
 </head>
 <body>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+        </tr>
+        <tr th:each="food : ${food}">
+            <td class="align-middle" th:text="${food.name}"></td>
+            <td class="align-middle" th:text="${food.meal}"></td>
+            <td class="align-middle" th:text="${food.calories}"></td>
+        </tr>
+    </table>
     <div class="container text-center">
-        <h1 th:text="${food}"></h1>
         <p>Click <a th:href="@{/home}">here</a> to return to the home page.</p>
     </div>
      

@@ -21,11 +21,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import antlr.collections.List;
+
 
 @Controller // this marks the class as a controller
 @RequestMapping(path="") // maps requests for urls that start with /demo, after application path
 public class MainController {
     
+    @Autowired
+    private FoodService foodService;
+
     @Autowired // this gets the bean called userRepository
     private UserRepository userRepository;
 
@@ -72,6 +77,14 @@ public class MainController {
         food.setUserId(userId);
         foodRepository.save(food);
 
+        return "home";
+    }
+
+    @RequestMapping(path="/allFood")
+    private String showFood (Model model) {
+        
+        Iterable<Food> foods = foodService.getFoods();
+        model.addAttribute("food", foods);
         return "food_list";
     }
 }
