@@ -1,8 +1,17 @@
 package com.health.tracker;
 
+import java.security.Principal;
+import java.util.UUID;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
+
 // controllers handle http requests for the application
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -57,6 +66,10 @@ public class MainController {
 
     @PostMapping(path="/process_food")
     public String addFood(Food food) {
+        CustomUserDetails customUserDetails = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        long userId = customUserDetails.getUserId();
+
+        food.setUserId(userId);
         foodRepository.save(food);
 
         return "food_list";

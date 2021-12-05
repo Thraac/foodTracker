@@ -19,9 +19,8 @@ public class Food {
     private Long id;
 
     // this should connect it to the user id
-    @ManyToOne()
-    @JoinColumn(name = "user_id")
-    private User user;
+    @Column(nullable = false, length = 64)
+    private Long user_id;
 
     @Column(nullable = false, length = 64)
     private String name;
@@ -56,6 +55,15 @@ public class Food {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Long getUserId() {
+        return user_id;
+    }
+
+    // USER ID
+    public void setUserId(Long user_id) {
+        this.user_id = user_id;
     }
 
     public String getName() {
