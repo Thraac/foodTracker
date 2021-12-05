@@ -15,7 +15,7 @@ public class Exercise {
     private Long id;
 
     @Column(nullable = false, length = 64)
-    private Long user_id;
+    private Long userId;
 
     @Column(nullable = false, length = 64)
     private String name;
@@ -40,11 +40,11 @@ public class Exercise {
     }
 
     public Long getUserId() {
-        return user_id;
+        return userId;
     }
 
-    public void setUserId(Long user_id) {
-        this.user_id = user_id;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
     public String getName(){

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>List of Exercise</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+</head>
+<body>
+    <table>
+        <tr>
+            <th>Exercise</th>
+            <th>Weight</th>
+            <th>Sets</th>
+            <th>Reps</th>
+        </tr>
+        <tr th:each="exercise : ${exerciseList}">
+            <td class="align-middle" th:text="${exercise.name}"></td>
+            <td class="align-middle" th:text="${exercise.weight}"></td>
+            <td class="align-middle" th:text="${exercise.sets}"></td>
+            <td class="align-middle" th:text="${exercise.reps}"></td>
+        </tr>
+    </table>
+    <div class="container text-center">
+        <p>Click <a th:href="@{/home}">here</a> to return to the home page.</p>
+    </div>
+     
+</body>
+</html>

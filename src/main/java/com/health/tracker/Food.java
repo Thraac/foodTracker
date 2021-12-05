@@ -20,7 +20,7 @@ public class Food {
 
     // this should connect it to the user id
     @Column(nullable = false, length = 64)
-    private Long user_id;
+    private Long userId;
 
     @Column(nullable = false, length = 64)
     private String name;
@@ -58,12 +58,12 @@ public class Food {
     }
 
     public Long getUserId() {
-        return user_id;
+        return userId;
     }
 
     // USER ID
-    public void setUserId(Long user_id) {
-        this.user_id = user_id;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
     public String getName() {
