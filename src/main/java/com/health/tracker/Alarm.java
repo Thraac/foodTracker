@@ -1,7 +1,6 @@
 package com.health.tracker;
 
 import java.sql.Date;
-import java.sql.Time;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -28,7 +27,7 @@ public class Alarm {
     private Date alarmDate;
 
     @Column(nullable = false)
-    private Time alarmTime;
+    private String alarmTime;
 
     // SETTERS AND GETTERS
 
@@ -56,19 +55,19 @@ public class Alarm {
         this.name = name;
     }
 
-    public Date getDate() {
+    public Date getAlarmDate() {
         return alarmDate;
     }
 
-    public void setDate(Date alarmDate) {
+    public void setAlarmDate(Date alarmDate) {
         this.alarmDate = alarmDate;
     }
 
-    public Time getTime() {
+    public String getAlarmTime() {
         return alarmTime;
     }
 
-    public void setTime(Time alarmTime) {
+    public void setAlarmTime(String alarmTime) {
         this.alarmTime = alarmTime;
     }
 
