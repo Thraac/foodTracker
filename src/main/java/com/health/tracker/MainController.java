@@ -64,12 +64,6 @@ public class MainController {
         return "register_success";
     }
 
-    // @GetMapping(path="/all") // map only get requests
-    // public @ResponseBody Iterable<User> getAllUsers() {
-    //     // this returns a json or xml with the users
-    //     return userRepository.findAll();
-    // }
-
     // FOOD
     @GetMapping(path="/addFood")
     public String showFoodForm(Model model) {

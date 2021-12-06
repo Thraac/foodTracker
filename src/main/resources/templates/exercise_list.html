@@ -14,6 +14,7 @@
             <th>Reps</th>
             <th>Date</th>
         </tr>
+        <!-- displays each part of the exercise -->
         <tr th:each="exercise : ${exerciseList}">
             <td class="align-middle" th:text="${exercise.name}"></td>
             <td class="align-middle" th:text="${exercise.weight}"></td>

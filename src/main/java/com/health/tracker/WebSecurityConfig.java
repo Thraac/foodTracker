@@ -52,9 +52,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        // This cannot stay in production, This prevents security from getting in the way of the testing
-        // Alter this before going live
         http.csrf().disable().authorizeRequests()
         .antMatchers(HttpMethod.GET, "/hello").authenticated()
         .antMatchers(HttpMethod.GET, "/addFood").authenticated()
@@ -77,17 +74,5 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         .and()
         .logout()
         .permitAll();
-
-        // http
-        //         .authorizeRequests()
-        //             .antMatchers("/", "/home").permitAll()
-        //             .anyRequest().authenticated()
-        //             .and()
-        //         .formLogin()
-        //             .loginPage("/login")
-        //             .permitAll()
-        //             .and()
-        //         .logout()
-        //             .permitAll();
     }
 }
