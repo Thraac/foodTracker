@@ -1,12 +1,10 @@
 package com.health.tracker;
 
-import java.util.List;
 import java.util.UUID;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
-import com.health.tracker.User;
 
 // This is auto implemented by spring into a bean called userRepository
     // spring makes it the same name but changes the case from User to user

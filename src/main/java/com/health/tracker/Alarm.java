@@ -56,7 +56,6 @@ public class Alarm {
         this.name = name;
     }
 
-
     public Date getDate() {
         return alarmDate;
     }

@@ -1,17 +1,9 @@
 package com.health.tracker;
 
-import java.security.Principal;
-import java.util.UUID;
-
-import javax.servlet.http.HttpServletRequest;
-
-import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
-
 // controllers handle http requests for the application
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,11 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
-
 
 @Controller // this marks the class as a controller
 @RequestMapping(path="") // maps requests for urls that start with /demo, after application path
@@ -42,6 +31,13 @@ public class MainController {
 
     @Autowired
     private ExerciseRepository exerciseRepository;
+
+    // ALARMS
+    @Autowired
+    private AlarmService alarmService;
+
+    @Autowired
+    private AlarmRepository alarmRepository;
 
     // USER
     @Autowired // this gets the bean called userRepository
@@ -124,6 +120,31 @@ public class MainController {
         List<Exercise> exercises = exerciseService.getExercises();
         model.addAttribute("exerciseList", exercises);
         return "exercise_list";
+    }
+
+    // ALARMS
+    @GetMapping(path="/addAlarm")
+    public String showAlarmForm(Model model) {
+        model.addAttribute("alarm", new Alarm());
+
+        return "add_alarm";
+    }
+
+    @PostMapping(path="/process_alarm")
+    public String addAlarm(Alarm alarm) {
+        CustomUserDetails customUserDetails = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        long userId = customUserDetails.getUserId();
+
+        alarm.setUserId(userId);
+        alarmRepository.save(alarm);
+        return "home";
+    }
+
+    @RequestMapping(path="/allAlarm", method=RequestMethod.GET)
+    private String showAlarm (Model model) {
+        List<Alarm> alarms = alarmService.getAlarms();
+        model.addAttribute("alarmList", alarms);
+        return "alarm_list";
     }
 }
 
