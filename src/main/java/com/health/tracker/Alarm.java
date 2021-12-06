@@ -18,6 +18,12 @@ public class Alarm {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @Column(nullable = false, length = 64)
+    private Long userId;
+
+    @Column(nullable = false)
+    private String name;
+
     @Column(nullable = false)
     private Date alarmDate;
 
@@ -33,6 +39,23 @@ public class Alarm {
     public void setId(Long id) {
         this.id = id;
     }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
 
     public Date getDate() {
         return alarmDate;

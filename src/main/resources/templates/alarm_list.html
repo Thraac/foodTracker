@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>List of Alarms</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+</head>
+<body>
+    <table>
+        <tr>
+            <th>Alarm</th>
+            <th>Time</th>
+            <th>Date</th>
+        </tr>
+        <tr th:each="alarm : ${alarmList}">
+            <td class="align-middle" th:text="${alarm.name}"></td>
+            <td class="align-middle" th:text="${alarm.alarmTime}"></td>
+            <td class="align-middle" th:text="${alarm.alarmDate}"></td>
+        </tr>
+    </table>
+    <div class="container text-center">
+        <p>Click <a th:href="@{/home}">here</a> to return to the home page.</p>
+    </div>
+     
+</body>
+</html>
