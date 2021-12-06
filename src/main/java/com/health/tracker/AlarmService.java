@@ -8,18 +8,16 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ExerciseService {
+public class AlarmService {
     @Autowired
-    private ExerciseRepository exerciseRepository;
+    private AlarmRepository alarmRepository;
 
-    public List<Exercise> getExercises() {
+    public List<Alarm> getAlarms() {
         CustomUserDetails customUserDetails = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         long userId = customUserDetails.getUserId();
 
-        
-        List<Exercise> list = new ArrayList<>();
-        // exerciseRepository.findAll().forEach(list::add);
-        exerciseRepository.findByUserId(userId).forEach(list::add);
+        List<Alarm> list = new ArrayList<>();
+        alarmRepository.findByUserId(userId).forEach(list::add);
         return list;
     }
 }
