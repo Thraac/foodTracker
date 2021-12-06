@@ -1,5 +1,7 @@
 package com.health.tracker;
 
+import java.sql.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -28,6 +30,9 @@ public class Exercise {
 
     @Column(nullable = false, length = 64)
     private int reps;
+
+    @Column
+    private Date exerciseDate;
 
     // SETTERS GETTERS
 
@@ -77,5 +82,13 @@ public class Exercise {
 
     public void setReps(int reps) {
         this.reps = reps;
+    }
+
+    public Date getExerciseDate() {
+        return exerciseDate;
+    }
+
+    public void setExerciseDate(Date exerciseDate) {
+        this.exerciseDate = exerciseDate;
     }
 }

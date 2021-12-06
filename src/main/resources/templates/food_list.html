@@ -16,6 +16,7 @@
             <th>Protein</th>
             <th>Serving Size</th>
             <th>Servings</th>
+            <th>Date</th>
         </tr>
         <tr th:each="food : ${foodList}">
             <td class="align-middle" th:text="${food.name}"></td>
@@ -26,6 +27,7 @@
             <td class="align-middle" th:text="${food.protein}"></td>
             <td class="align-middle" th:text="${food.servingSize}"></td>
             <td class="align-middle" th:text="${food.servings}"></td>
+            <td class="align-middle" th:text="${food.foodDate}"></td>
         </tr>
     </table>
     <div class="container text-center">

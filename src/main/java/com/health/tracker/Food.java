@@ -1,12 +1,12 @@
 package com.health.tracker;
 
+import java.sql.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -45,6 +45,9 @@ public class Food {
 
     @Column(nullable = false, length = 10)
     private float servings;
+
+    @Column
+    private Date foodDate;
 
 
     // SETTERS GETTERS 
@@ -129,4 +132,12 @@ public class Food {
     public void setServings(float servings) {
         this.servings = servings;
     } 
+
+    public Date getFoodDate() {
+        return foodDate;
+    }
+
+    public void setFoodDate(Date foodDate) {
+        this.foodDate = foodDate;
+    }
 }

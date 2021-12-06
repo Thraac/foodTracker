@@ -12,12 +12,14 @@
             <th>Weight</th>
             <th>Sets</th>
             <th>Reps</th>
+            <th>Date</th>
         </tr>
         <tr th:each="exercise : ${exerciseList}">
             <td class="align-middle" th:text="${exercise.name}"></td>
             <td class="align-middle" th:text="${exercise.weight}"></td>
             <td class="align-middle" th:text="${exercise.sets}"></td>
             <td class="align-middle" th:text="${exercise.reps}"></td>
+            <td class="align-middle" th:text="${exercise.exerciseDate}"></td>
         </tr>
     </table>
     <div class="container text-center">
